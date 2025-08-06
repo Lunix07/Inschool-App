@@ -10,7 +10,7 @@ const articleController = require('../controllers/article.controller')
 // Define routes
 router.post("/contact", contactController.submitInquiry);
 router.get("/admin/inquiries", verifyAdmin, contactController.getAllInquiries);
-router.post("/admin/reply/:email", verifyAdmin, contactController.replyToInquiry);
+router.post("/admin/reply", verifyAdmin, contactController.replyToInquiry);
 router.post('/login', authController.login);
 router.get('/', (req, res) => {
   res.send('API is running!');
