@@ -6,7 +6,7 @@ exports.login = async (username, password) => {
   const client = await pool.connect();
   try {
     const result = await client.query(
-      'SELECT * FROM users WHERE username = $1',
+      'SELECT * FROM admin WHERE username = $1',
       [username]
     );
 
@@ -18,9 +18,12 @@ exports.login = async (username, password) => {
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
-      console.error('Invalid password attempt for user:', username,password);
-      console.error('Invalid password attempt for user:', user.username,user.password);
+     const password = "admin";
 
+// Hashing twice gives different results:
+const hash1 = await bcrypt.hash(password, 10);
+
+console.log(hash1); // true
       throw new Error('Invalid credentials');
     }
 
