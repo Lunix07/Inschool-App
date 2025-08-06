@@ -47,7 +47,7 @@ exports.replyToInquiry = async (email, subject, message) => {
     });
 
     await transporter.sendMail({
-        from: `"Inschool Support" <${process.env.SMTP_EMAIL}>`,
+        from: `Inschool Support <${process.env.SMTP_EMAIL}>`,
         to: email,
         subject,
         text: message,

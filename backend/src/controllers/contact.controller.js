@@ -26,8 +26,7 @@ exports.getAllInquiries = async (req, res) => {
 
 exports.replyToInquiry = async (req, res) => {
     try {
-        const { subject, message } = req.body;
-        const { email } = req.params;
+        const { email,subject, message } = req.body;
 
         if (!subject || !message) {
             return res.status(400).json({ message: "Subject and message are required" });
