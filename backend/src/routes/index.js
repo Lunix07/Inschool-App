@@ -17,9 +17,9 @@ router.get('/', (req, res) => {
 });
 router.get('/articles', articleController.getArticles)
 router.get('/articles/:id', articleController.getArticleById)
-router.post('/articles', articleController.createArticle)
-router.put('/articles/:id', articleController.updateArticle)
-router.delete('/articles/:id', articleController.removeArticle)
+router.post('/articles', verifyAdmin, articleController.createArticle)
+router.put('/articles/:id', verifyAdmin, articleController.updateArticle)
+router.delete('/articles/:id', verifyAdmin, articleController.removeArticle)
 
 
 module.exports = router;
